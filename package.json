@@ -1,0 +1,27 @@
+{
+  "name": "screen-effect",
+  "version": "1.0.0",
+  "description": "屏幕级别特效系统",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:test": "IS_TEST=true vite",
+    "dev:normal": "vite --mode development",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "styled-components": "^6.1.8"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@vitejs/plugin-react": "^4.2.1",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vite-plugin-singlefile": "^2.0.1"
+  }
+}
+
