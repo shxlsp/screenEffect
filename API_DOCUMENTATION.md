@@ -54,7 +54,7 @@ window.ipcRenderer.send('effect-stop', payload);
 
 | 参数名 | 类型 | 默认值 | 说明 |
 |--------|------|--------|------|
-| `riseDuration` | `number` | `2000` | 升起动画时长（毫秒） |
+| `riseDuration` | `number` | `1800` | 升起动画时长（毫秒） |
 
 **示例**:
 
@@ -62,7 +62,7 @@ window.ipcRenderer.send('effect-stop', payload);
 const payload = JSON.stringify({
   type: 'riseArc',
   options: {
-    riseDuration: 2000
+    riseDuration: 1800
   }
 });
 window.ipcRenderer.send('effect-start', payload);
@@ -246,6 +246,78 @@ window.ipcRenderer.send('effect-start', payload);
 
 ---
 
+### 8. conicBorder - 彩色边框
+
+**描述**: 旋转的彩色圆锥渐变边框特效，具有霓虹风格的视觉效果
+
+**特效类型**: `conicBorder`
+
+**Options 参数**:
+
+| 参数名 | 类型 | 默认值 | 说明 |
+|--------|------|--------|------|
+| `speed` | `number` | `4000` | 旋转速度（毫秒），值越小速度越快 |
+| `size` | `number` | `16` | 边框尺寸大小（像素） |
+| `duration` | `number` | `0` | 持续时间（毫秒），0 表示持续播放 |
+
+**示例**:
+
+```javascript
+const payload = JSON.stringify({
+  type: 'conicBorder',
+  options: {
+    speed: 4000,
+    size: 16,
+    duration: 3000  // 可选，3秒后自动停止
+  }
+});
+window.ipcRenderer.send('effect-start', payload);
+```
+
+---
+
+### 9. waveSound - 音波动效
+
+**描述**: 在屏幕左右两侧纵向展示连续的波纹，从底部到顶部持续波动，带有渐变效果和模糊处理
+
+**特效类型**: `waveSound`
+
+**Options 参数**:
+
+| 参数名 | 类型 | 默认值 | 说明 |
+|--------|------|--------|------|
+| `speed` | `number` | `5` | 波动速度，值越大波动越快 |
+| `sideOffset` | `number` | `30` | 距离屏幕边缘的距离（像素） |
+| `color` | `string` | `'#667eea'` | 音波颜色（CSS 颜色值），实际使用彩色渐变 |
+| `maxAmplitude` | `number` | `50` | 最大振幅（像素） |
+| `wavePoints` | `number` | `300` | 波形点的数量，更多点使波纹更平滑 |
+| `amplitudeStep` | `number` | `0.02` | 振幅变化固定增量 |
+| `amplitudeMin` | `number` | `0.3` | 最小振幅（0-1） |
+| `amplitudeMax` | `number` | `0.7` | 最大振幅（0-1） |
+| `duration` | `number` | `0` | 持续时间（毫秒），0 表示持续播放 |
+
+**示例**:
+
+```javascript
+const payload = JSON.stringify({
+  type: 'waveSound',
+  options: {
+    speed: 5,
+    sideOffset: 30,
+    color: '#667eea',
+    maxAmplitude: 50,
+    wavePoints: 300,
+    amplitudeStep: 0.02,
+    amplitudeMin: 0.3,
+    amplitudeMax: 0.7,
+    duration: 5000  // 可选，5秒后自动停止
+  }
+});
+window.ipcRenderer.send('effect-start', payload);
+```
+
+---
+
 ## 通用 Options 参数
 
 所有特效都支持以下通用参数：
@@ -325,11 +397,13 @@ window.ipcRenderer.send('effect-stop', payload);
 
 | 特效类型 | 特效名称 | 默认持续时间 |
 |---------|---------|------------|
-| `riseArc` | 圆弧升起 | 2600ms（自动） |
+| `riseArc` | 圆弧升起 | 2400ms（自动，包含延迟和淡出） |
 | `crossScan` | 对向粒子扫描 | 2200ms |
 | `scan` | 扫描 | 2000ms |
 | `confetti` | 五彩纸屑 | 持续播放 |
 | `fireworks` | 烟花 | 持续播放 |
 | `glow` | 发光边框 | 持续播放 |
 | `snow` | 飘雪 | 持续播放 |
+| `conicBorder` | 彩色边框 | 持续播放 |
+| `waveSound` | 音波动效 | 持续播放 |
 

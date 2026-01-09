@@ -27,6 +27,9 @@ import './RiseArc';
 // 彩色边框特效
 import './ConicBorder';
 
+// 音波动效
+import './WaveSound';
+
 // 导出供外部使用（如有需要）
 export { ConfettiEffect } from './Confetti';
 export { SnowEffect } from './Snow';
@@ -36,4 +39,5 @@ export { ScanEffect } from './Scan';
 export { CrossScanEffect } from './CrossScan';
 export { RiseArcEffect } from './RiseArc';
 export { ConicBorderEffect } from './ConicBorder';
+export { WaveSoundEffect } from './WaveSound';
 
